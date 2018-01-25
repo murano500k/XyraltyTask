@@ -1,19 +1,18 @@
 package com.stc.xyralitytask;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-import com.stc.xyralitytask.data.AllAvailableWorld;
-import com.stc.xyralitytask.data.MyResponce;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     public static final String EXTRA_WORLDS_LIST = "extra_worlds";
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,28 +20,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        processIntent();
+        listView=findViewById(R.id.lv);
+        parseIntent();
     }
 
-    private void processIntent(){
-        if(getIntent()==null){
-            Log.e(TAG, "processIntent: null" );
+    private void parseIntent(){
+        if (getIntent()==null){
+            Log.e(TAG, "parseIntent: null" );
             finish();
         }
-        MyResponce myResponce = (MyResponce) getIntent().getSerializableExtra(MainActivity.EXTRA_WORLDS_LIST);
-        for (AllAvailableWorld w :
-                myResponce.getAllAvailableWorlds()) {
-
-            Log.w(TAG, "processIntent: "+w.toString() );
+        List<String>names=getIntent().getStringArrayListExtra(EXTRA_WORLDS_LIST);
+        if(names==null || names.isEmpty()){
+            Log.e(TAG, "parseIntent: null" );
+            finish();
+        }else {
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1, names);
+            listView.setAdapter(adapter);
         }
     }
 
