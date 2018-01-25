@@ -1,4 +1,4 @@
-package com.stc.xyraltytask;
+package com.stc.xyralitytask;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

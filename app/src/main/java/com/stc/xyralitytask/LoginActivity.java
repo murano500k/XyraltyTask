@@ -1,24 +1,24 @@
-package com.stc.xyraltytask;
+package com.stc.xyralitytask;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
-
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,8 +29,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.stc.xyralitytask.data.AllAvailableWorld;
+import com.stc.xyralitytask.data.Creds;
+import com.stc.xyralitytask.data.MyResponce;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -39,6 +47,7 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
+    private static final String TAG = "LoginActivity";
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -61,11 +70,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private RetrofitHelper retrofitHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        retrofitHelper=new RetrofitHelper();
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -92,6 +103,30 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+        retrofitHelper.getResponce(getCreds(), new Callback<MyResponce>() {
+            @Override
+            public void onResponse(Call<MyResponce> call, Response<MyResponce> response) {
+                logResponce(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<MyResponce> call, Throwable t) {
+                Log.e(TAG, "onFailure: ",t );
+            }
+        });
+    }
+
+
+    private void logResponce(MyResponce body) {
+        Log.d(TAG, "logResponce()");
+        for (AllAvailableWorld w :
+                body.getAllAvailableWorlds()) {
+            Log.w(TAG, "world: "+w.toString());
+        }
+    }
+
+    Creds getCreds(){
+        return new Creds("android.test@xyrality.com","password", "Pixel8.1.0", "1066869565");
     }
 
     private void populateAutoComplete() {
@@ -185,8 +220,23 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
+            //mAuthTask = new UserLoginTask(email, password);
+            //mAuthTask.execute((Void) null);
+            retrofitHelper.getResponce(getCreds(),new Callback<MyResponce>() {
+                @Override
+                public void onResponse(Call<MyResponce> call, Response<MyResponce> response) {
+                    Log.w(TAG, "onResponse: OK" );
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    //intent.putExtra(MainActivity.EXTRA_WORLDS_LIST, response.body());
+                    startActivity(intent);
+                    //logResponce(response.body());
+                }
+
+                @Override
+                public void onFailure(Call<MyResponce> call, Throwable t) {
+                    Log.e(TAG, "onFailure: ",t );
+                }
+            });
         }
     }
 

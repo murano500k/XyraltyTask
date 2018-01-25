@@ -1,4 +1,4 @@
-package com.stc.xyraltytask;
+package com.stc.xyralitytask;
 
 import org.junit.Test;
 

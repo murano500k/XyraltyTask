@@ -1,0 +1,361 @@
+{
+  "featureHelpshift" = "true";
+  "featureAppleTVSynchronisation" = "false";
+  "featureDirectPlay" = "true";
+  "googleLoginSwitchOn" = "true";
+  "serverVersion" = "6.15.0";
+  "facebookLoginSwitchOn" = "true";
+  "allAvailableWorlds" = (
+{
+  "name" = "\U0420\U043e\U0441\U0441\U0438\U044f 16 (\U043d\U043e\U0432\U044b\U0439)";
+  "mapURL" = "https://backend2.lordsandknights.com/maps/LKWorldServer-RU-16";
+  "worldStatus" = {
+  "id" = "3";
+  "description" = "online";
+};
+"country" = "RU";
+"language" = "ru";
+"id" = "190";
+"url" = "https://backend2.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-RU-16.woa";
+},
+{
+"name" = "\U0420\U043e\U0441\U0441\U0438\U044f 15";
+"mapURL" = "https://backend2.lordsandknights.com/maps/LKWorldServer-RU-15";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "RU";
+"language" = "ru";
+"id" = "174";
+"url" = "https://backend2.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-RU-15.woa";
+},
+{
+"name" = "\U0420\U043e\U0441\U0441\U0438\U044f 14";
+"mapURL" = "https://backend3.lordsandknights.com/maps/LKWorldServer-RU-14";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "RU";
+"language" = "ru";
+"id" = "165";
+"url" = "https://backend3.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-RU-14.woa";
+},
+{
+"name" = "\U0420\U043e\U0441\U0441\U0438\U044f 13";
+"mapURL" = "https://backend2.lordsandknights.com/maps/LKWorldServer-RU-13";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "RU";
+"language" = "ru";
+"id" = "150";
+"url" = "https://backend2.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-RU-13.woa";
+},
+{
+"name" = "\U0420\U043e\U0441\U0441\U0438\U044f 12";
+"mapURL" = "https://backend2.lordsandknights.com/maps/LKWorldServer-RU-12";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "RU";
+"language" = "ru";
+"id" = "140";
+"url" = "https://backend2.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-RU-12.woa";
+},
+{
+"name" = "\U0420\U043e\U0441\U0441\U0438\U044f 11";
+"mapURL" = "https://backend2.lordsandknights.com/maps/LKWorldServer-RU-11";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "RU";
+"language" = "ru";
+"id" = "122";
+"url" = "https://backend2.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-RU-11.woa";
+},
+{
+"name" = "\U0420\U043e\U0441\U0441\U0438\U044f 10";
+"mapURL" = "https://backend3.lordsandknights.com/maps/LKWorldServer-RU-10";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "RU";
+"language" = "ru";
+"id" = "112";
+"url" = "https://backend3.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-RU-10.woa";
+},
+{
+"name" = "\U0420\U043e\U0441\U0441\U0438\U044f 9";
+"mapURL" = "https://backend1.lordsandknights.com/maps/LKWorldServer-RU-9";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "RU";
+"language" = "ru";
+"id" = "107";
+"url" = "https://backend1.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-RU-9.woa";
+},
+{
+"name" = "\U0420\U043e\U0441\U0441\U0438\U044f 8";
+"mapURL" = "https://backend1.lordsandknights.com/maps/LKWorldServer-RU-8";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "RU";
+"language" = "ru";
+"id" = "93";
+"url" = "https://backend1.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-RU-8.woa";
+},
+{
+"name" = "\U0420\U043e\U0441\U0441\U0438\U044f 7";
+"mapURL" = "https://backend1.lordsandknights.com/maps/LKWorldServer-RU-7";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "RU";
+"language" = "ru";
+"id" = "73";
+"url" = "https://backend1.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-RU-7.woa";
+},
+{
+"name" = "\U0420\U043e\U0441\U0441\U0438\U044f 6";
+"mapURL" = "https://backend3.lordsandknights.com/maps/LKWorldServer-RU-6";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "RU";
+"language" = "ru";
+"id" = "64";
+"url" = "https://backend3.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-RU-6.woa";
+},
+{
+"name" = "T\U00fcrk\U00e7e 8 (Tavsiye Edilen)";
+"mapURL" = "https://backend2.lordsandknights.com/maps/LKWorldServer-TR-8";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "TR";
+"language" = "tr";
+"id" = "181";
+"url" = "https://backend2.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-TR-8.woa";
+},
+{
+"name" = "T\U00fcrk\U00e7e 7";
+"mapURL" = "https://backend3.lordsandknights.com/maps/LKWorldServer-TR-7";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "TR";
+"language" = "tr";
+"id" = "152";
+"url" = "https://backend3.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-TR-7.woa";
+},
+{
+"name" = "T\U00fcrk\U00e7e 6";
+"mapURL" = "https://backend2.lordsandknights.com/maps/LKWorldServer-TR-6";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "TR";
+"language" = "tr";
+"id" = "124";
+"url" = "https://backend2.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-TR-6.woa";
+},
+{
+"name" = "T\U00fcrk\U00e7e 5";
+"mapURL" = "https://backend1.lordsandknights.com/maps/LKWorldServer-TR-5";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "TR";
+"language" = "tr";
+"id" = "109";
+"url" = "https://backend1.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-TR-5.woa";
+},
+{
+"name" = "T\U00fcrk\U00e7e 4";
+"mapURL" = "https://backend2.lordsandknights.com/maps/LKWorldServer-TR-4";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "TR";
+"language" = "tr";
+"id" = "90";
+"url" = "https://backend2.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-TR-4.woa";
+},
+{
+"name" = "T\U00fcrk\U00e7e 3";
+"mapURL" = "https://backend1.lordsandknights.com/maps/LKWorldServer-TR-3";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "TR";
+"language" = "tr";
+"id" = "50";
+"url" = "https://backend1.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-TR-3.woa";
+},
+{
+"name" = "T\U00fcrk\U00e7e 1";
+"mapURL" = "https://backend2.lordsandknights.com/maps/LKWorldServer-TR-1";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "TR";
+"language" = "tr";
+"id" = "11";
+"url" = "https://backend2.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-TR-1.woa";
+},
+{
+"name" = "Battle World 5 (recommended)";
+"mapURL" = "https://backend3.lordsandknights.com/maps/LKWorldServer-BattleWorld-World-5";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "XB";
+"language" = "xb";
+"id" = "193";
+"url" = "https://backend3.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-BattleWorld-World-5.woa";
+},
+{
+"name" = "Europe 3 (recommended)";
+"mapURL" = "https://backend3.lordsandknights.com/maps/LKWorldServer-Europe-3";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "XB";
+"language" = "xb";
+"id" = "182";
+"url" = "https://backend3.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-Europe-3.woa";
+},
+{
+"name" = "Battle World 4";
+"mapURL" = "https://backend1.lordsandknights.com/maps/LKWorldServer-BattleWorld-World-4";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "XB";
+"language" = "xb";
+"id" = "177";
+"url" = "https://backend1.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-BattleWorld-World-4.woa";
+},
+{
+"name" = "Europe 2";
+"mapURL" = "https://backend3.lordsandknights.com/maps/LKWorldServer-Europe-2";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "XB";
+"language" = "xb";
+"id" = "155";
+"url" = "https://backend3.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-Europe-2.woa";
+},
+{
+"name" = "Battle World 3";
+"mapURL" = "https://backend1.lordsandknights.com/maps/LKWorldServer-BattleWorld-World-3";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "XB";
+"language" = "xb";
+"id" = "145";
+"url" = "https://backend1.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-BattleWorld-World-3.woa";
+},
+{
+"name" = "Europe 1";
+"mapURL" = "https://backend3.lordsandknights.com/maps/LKWorldServer-Europe-1";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "XB";
+"language" = "xb";
+"id" = "128";
+"url" = "https://backend3.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-Europe-1.woa";
+},
+{
+"name" = "Battle World 2";
+"mapURL" = "https://backend3.lordsandknights.com/maps/LKWorldServer-BattleWorld-World-2";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "XB";
+"language" = "xb";
+"id" = "117";
+"url" = "https://backend3.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-BattleWorld-World-2.woa";
+},
+{
+"name" = "Battle World";
+"mapURL" = "https://backend1.lordsandknights.com/maps/LKWorldServer-BattleWorld-World";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "XB";
+"language" = "xb";
+"id" = "98";
+"url" = "https://backend1.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-BattleWorld-World.woa";
+},
+{
+"name" = "Battle Asia Pacific";
+"mapURL" = "https://backend1.lordsandknights.com/maps/LKWorldServer-BattleWorld-AS";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "XB";
+"language" = "xb";
+"id" = "77";
+"url" = "https://backend1.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-BattleWorld-AS.woa";
+},
+{
+"name" = "Battle Euro \U0420\U043e\U0441\U0441\U0438\U044f \U0627\U0644\U0639\U0631\U0628\U064a\U0629";
+"mapURL" = "https://backend3.lordsandknights.com/maps/LKWorldServer-BattleWorld-EU";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "XB";
+"language" = "xb";
+"id" = "76";
+"url" = "https://backend3.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-BattleWorld-EU.woa";
+},
+{
+"name" = "Battle Americas";
+"mapURL" = "https://backend3.lordsandknights.com/maps/LKWorldServer-BattleWorld-US";
+"worldStatus" = {
+"id" = "3";
+"description" = "online";
+};
+"country" = "XB";
+"language" = "xb";
+"id" = "75";
+"url" = "https://backend3.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-BattleWorld-US.woa";
+}
+);
+"isGuestLogin" = "false";
+"time" = "2018-01-25 15:22:37 Etc/GMT";
+"info" = "Unknown user";
+}
