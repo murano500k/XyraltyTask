@@ -1,5 +1,6 @@
 package com.stc.xyralitytask;
 
+import android.util.JsonReader;
 import android.util.Log;
 
 import org.apache.http.HttpResponse;
@@ -10,7 +11,8 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +46,12 @@ public class ApiHelper {
             // Execute HTTP Post Request
             Log.d(TAG, "postData: before post");
             HttpResponse response = httpclient.execute(httppost);
+            result=readJsonStream(response.getEntity().getContent());
+            /*
             BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
             String line;
+            String all="";
+
 
             while ((line = rd.readLine()) != null) {
                 if(line.contains("name")){
@@ -53,11 +59,13 @@ public class ApiHelper {
                     String converted = decode(name);
                     result.add(converted);
                 }
+                all+=line+"\n";
+
 
             }
             rd.close();
-
-
+            Log.w(TAG, "postData:\n\n"+all );
+*/
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -90,4 +98,42 @@ public class ApiHelper {
         res=res.substring(0,res.length()-2);
         return res;
     }
+
+
+    public List<String> readJsonStream(InputStream in) throws IOException {
+        JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+
+        reader.setLenient(true);
+        reader.beginObject();
+        while(!reader.nextName().equals("allAvailableWorlds")){
+            reader.skipValue();
+        }
+
+
+        try {
+            return readMessagesArray(reader);
+        } finally {
+            reader.close();
+        }
+    }
+
+    public List<String> readMessagesArray(JsonReader reader) throws IOException {
+        String text = null;
+
+        List<String> messages = new ArrayList<String>();
+
+        reader.beginArray();
+        while (reader.hasNext()) {
+            String name = reader.nextName();
+            if (name.equals("name")) {
+                text = reader.nextString();
+                messages.add(text);
+            } else {
+                reader.skipValue();
+            }
+        }
+        reader.endArray();
+        return messages;
+    }
+
 }
