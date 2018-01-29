@@ -2,9 +2,7 @@ package com.stc.xyralitytask;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -21,11 +19,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.BiConsumer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 
-public class LoginActivity extends AppCompatActivity implements BiConsumer<List<String>, Throwable> {
+public class LoginActivity extends AppCompatActivity  {
 
     private static final String TAG = "LoginActivity";
 
@@ -34,13 +34,12 @@ public class LoginActivity extends AppCompatActivity implements BiConsumer<List<
     private View mProgressView;
     private View mLoginFormView;
     private LoginPresenter mPresenter;
-    private CompositeDisposable mDisposable;
+    private Disposable mDisposable;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mDisposable=new CompositeDisposable();
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -77,7 +76,7 @@ public class LoginActivity extends AppCompatActivity implements BiConsumer<List<
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(!mDisposable.isDisposed())mDisposable.dispose();
+        if(mDisposable!=null && !mDisposable.isDisposed())mDisposable.dispose();
     }
 
     private void test() {
@@ -87,8 +86,9 @@ public class LoginActivity extends AppCompatActivity implements BiConsumer<List<
 
 
     private void attemptLogin() {
-        if (!mDisposable.isDisposed()) {
+        if (mDisposable!=null && !mDisposable.isDisposed()) {
             mDisposable.dispose();
+            showProgress(false);
         }
 
         // Reset errors.
@@ -125,9 +125,10 @@ public class LoginActivity extends AppCompatActivity implements BiConsumer<List<
             focusView.requestFocus();
         } else {
             showProgress(true);
-            mDisposable.add(
-                    mPresenter.login(email, password).subscribe(this)
-            );
+            mDisposable=mPresenter.login(email, password)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(getOnSuccessConsumer(),getOnErrorConsumer());
         }
     }
 
@@ -139,15 +140,7 @@ public class LoginActivity extends AppCompatActivity implements BiConsumer<List<
         return password.length() > 4;
     }
 
-    /**
-     * Shows the progress UI and hides the login form.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     public void showProgress(final boolean show) {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
@@ -167,12 +160,6 @@ public class LoginActivity extends AppCompatActivity implements BiConsumer<List<
                     mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
                 }
             });
-        } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-        }
     }
 
     private void startMainActivity(List<String> worldNames) {
@@ -182,13 +169,28 @@ public class LoginActivity extends AppCompatActivity implements BiConsumer<List<
         startActivity(intent);
     }
 
-    @Override
-    public void accept(List<String> strings, Throwable throwable) throws Exception {
-        Log.w(TAG, "accept: "+strings+" "+throwable );
-        if(strings==null || strings.isEmpty()){
-            mPasswordView.setError(throwable.getMessage());
-        }else startMainActivity(strings);
-        showProgress(false);
+
+    Consumer<List<String>> getOnSuccessConsumer(){
+        return new Consumer<List<String>>() {
+            @Override
+            public void accept(List<String> strings) throws Exception {
+                if(strings==null || strings.isEmpty()){
+                    Log.w(TAG, "accept: empty" );
+                    mPasswordView.setError("error");
+                }else startMainActivity(strings);
+                showProgress(false);
+            }
+        };
+    }
+    Consumer<Throwable> getOnErrorConsumer(){
+        return new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) throws Exception {
+                Log.e(TAG, "error: ",throwable );
+                mPasswordView.setError(throwable.getMessage());
+                showProgress(false);
+            }
+        };
     }
 }
 
